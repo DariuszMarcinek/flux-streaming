@@ -1,0 +1,9 @@
+micronaut:
+  server:
+    port: 8000
+  application:
+    name: FluxStreamingApplication
+  http:
+    services:
+      cars:
+        url: "http://localhost:8001"

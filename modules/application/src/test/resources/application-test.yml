@@ -1,0 +1,7 @@
+micronaut:
+  server:
+    port: 8002
+  http:
+    services:
+      cars:
+        url: "http://localhost:8001"

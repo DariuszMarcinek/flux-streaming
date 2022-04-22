@@ -1,0 +1,6 @@
+micronaut:
+  server:
+    port: 8001
+  application:
+    name: FluxStreamingService
+
