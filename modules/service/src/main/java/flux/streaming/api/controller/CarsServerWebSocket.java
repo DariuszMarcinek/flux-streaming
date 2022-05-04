@@ -25,7 +25,7 @@ public class CarsServerWebSocket {
     }
 
     @OnMessage
-    public void onMessage(Car car) throws InterruptedException {
+    public void onMessage(Car car) {
         log.info("onMessage - received car: {}", car);
 
         Mono.fromRunnable(() -> sendAcknowledge(car.name()))
