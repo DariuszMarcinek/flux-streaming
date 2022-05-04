@@ -1,6 +1,7 @@
-package flux.streaming.service.controller;
+package flux.streaming.api.controller;
 
-import flux.streaming.service.model.Car;
+import flux.streaming.api.Cars;
+import flux.streaming.api.model.Car;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -34,5 +35,10 @@ public class CarsController implements Cars {
                         .doOnNext(car -> log.info("Service - CARS WITH DELAY - NEXT: {}", car))
                         .doOnCancel(() -> log.info("Service - CARS WITH DELAY - CANCELLED"));
     }
+
+//    @Get(uri = "/testws/{message}")
+//    public Flux<Car> getCarsWithDelay(@PathVariable("message") String message) {
+//        return carsWebSocket.
+//    }
 
 }

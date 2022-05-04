@@ -1,7 +1,7 @@
-package flux.streaming.service.client;
+package flux.streaming.api.client;
 
-import flux.streaming.service.controller.Cars;
-import flux.streaming.service.model.Car;
+import flux.streaming.api.Cars;
+import flux.streaming.api.model.Car;
 import io.micronaut.http.HttpVersion;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;

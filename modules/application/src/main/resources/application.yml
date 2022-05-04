@@ -1,9 +1,12 @@
 micronaut:
   server:
     port: 8000
+    idle-timeout: 60m
+    read-idle-timeout: 60m
+    write-idle-timeout: 60m
   application:
     name: FluxStreamingApplication
   http:
     services:
       cars:
-        url: "http://localhost:8001"
+        url: "http://localhost:8002"

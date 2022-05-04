@@ -2,3 +2,4 @@ rootProject.name = "flux-streaming"
 
 include("modules:service")
 include("modules:application")
+include("modules:api")

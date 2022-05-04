@@ -16,19 +16,10 @@ dependencies {
     implementation("io.micronaut:micronaut-jackson-databind")
     implementation("io.micronaut:micronaut-runtime")
     implementation("jakarta.annotation:jakarta.annotation-api")
-    runtimeOnly("ch.qos.logback:logback-classic")
     implementation("io.micronaut:micronaut-validation")
-    implementation(project(":modules:api"))
     implementation("io.micronaut.reactor:micronaut-reactor-http-client")
-    implementation("org.fusesource.jansi:jansi:2.4.0")
-    implementation("io.micronaut:micronaut-websocket")
-
 }
 
-
-application {
-    mainClass.set("flux.streaming.application.Application")
-}
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
     targetCompatibility = JavaVersion.toVersion("17")
@@ -40,7 +31,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("flux.streaming.application.*")
+        annotations("flux.streaming.api.*")
     }
 }
 

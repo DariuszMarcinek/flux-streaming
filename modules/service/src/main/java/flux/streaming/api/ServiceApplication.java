@@ -1,4 +1,4 @@
-package flux.streaming.service;
+package flux.streaming.api;
 
 import io.micronaut.runtime.Micronaut;
 

@@ -1,16 +1,9 @@
 package flux.streaming.application;
 
-import flux.streaming.service.client.CarsClient;
-import flux.streaming.service.model.Car;
+import flux.streaming.api.client.CarsClient;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

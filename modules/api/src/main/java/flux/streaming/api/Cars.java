@@ -1,6 +1,6 @@
-package flux.streaming.service.controller;
+package flux.streaming.api;
 
-import flux.streaming.service.model.Car;
+import flux.streaming.api.model.Car;
 import reactor.core.publisher.Flux;
 
 public interface Cars {

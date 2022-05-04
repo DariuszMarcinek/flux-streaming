@@ -1,17 +1,15 @@
 package flux.streaming.application;
 
-import flux.streaming.service.client.CarsClient;
-import flux.streaming.service.model.Car;
+import flux.streaming.api.client.CarsClient;
+import flux.streaming.api.model.Car;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
+import io.micronaut.http.client.annotation.Client;
+import io.micronaut.reactor.http.client.websocket.ReactorWebSocketClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
-
-import java.time.Duration;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 public class CarsAppController {
@@ -20,8 +18,15 @@ public class CarsAppController {
 
     private final CarsClient carsClient;
 
-    public CarsAppController(CarsClient carsClient) {
+    private final CarsClientWebSocket carsClientWebSocket;
+
+    private final ReactorWebSocketClient webSocketClient;
+
+    public CarsAppController(CarsClient carsClient, CarsClientWebSocket carsClientWebSocket,
+                             @Client("http://localhost:8002") ReactorWebSocketClient webSocketClient) {
         this.carsClient = carsClient;
+        this.carsClientWebSocket = carsClientWebSocket;
+        this.webSocketClient = webSocketClient;
     }
 
     @Get("/cars-get")
@@ -45,4 +50,11 @@ public class CarsAppController {
         log.info("App - client: {}, classes: {}", carsClient, carsClient.getClass().getClasses());
     }
 
+    @Get("/cars-send/{topic}")
+    public String sendCars(@PathVariable("topic") String topic) {
+        webSocketClient.connect(CarsClientWebSocket.class, "/ws/cars/" + topic)
+                       .subscribe(client -> client.sendCars());
+
+        return "sent";
+    }
 }

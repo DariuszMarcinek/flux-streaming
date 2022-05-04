@@ -1,6 +1,9 @@
 micronaut:
   server:
-    port: 8001
+    port: 8002
+    idle-timeout: 60m
+    read-idle-timeout: 60m
+    write-idle-timeout: 60m
   application:
     name: FluxStreamingService
 
